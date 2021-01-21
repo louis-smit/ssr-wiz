@@ -17,7 +17,7 @@ const Home = ({ initialProducts }: { initialProducts: Product[] }) => {
 
     // Fetch the search results
     const result = await client.request({
-      query: searchQuery || null,
+      query: searchQuery
     })
 
     setProducts(result.products)
