@@ -8,7 +8,7 @@ const paramsBuilder = (search: string) => `?search=${search}`
 const Home = ({ initialProducts }: { initialProducts: Product[] }) => {
   const { query, ...router } = useRouter()
   const { search } = query
-  const [searchQuery, setSearchQuery] = useState(search ? String(search) : "")
+  const [searchQuery, setSearchQuery] = useState<string>(search ? String(search) : "")
   const [products, setProducts] = useState<Product[]>(initialProducts)
 
   const handleSearch = async () => {
@@ -26,7 +26,7 @@ const Home = ({ initialProducts }: { initialProducts: Product[] }) => {
   const fetchMore = async () => {
     // Fetch the new products
     const result = await client.request({
-      query: searchQuery || null,
+      query: searchQuery,
       after: products.length,
     })
 
